@@ -66,6 +66,15 @@
     loadRSS(url);
   }
 
+
+function start()
+  {
+  	var feedURL = window.location.hash.replace("#", "")
+	  var url = "./getFeedData?url=" + feedURL;
+	  loadRSS(url);
+	   
+  }
+
   function loadRSS(url){
     console.log(url);
     loadFile(url, function(resData){
@@ -89,10 +98,26 @@
     var thumbnail = data.artworkUrl100 || "";
     var name = data.name || "";
     var link = data.url || "";
-    console.log(data);
+	var link2 = data.artisUrl || "";
+		var artist = data.artistName || "";
+		var releaseDate = data.releaseDate || "";
+		var genre = data.genres[0].name|| "";
+		var copyright = data.copyright || "";
+   	 	console.log(data);
+
+
+
+
+
+
+
 
     markup += "<img src='" + thumbnail + "'>";
     markup += "<a target='_blank' href='" + link + "'><h1>" + name + "</h1></a>";
+	markup += "<a target='_blank' href=' " + link2 + " '><h1>" + artist + "</h1></a>";
+	markup += "<h3>Genre: " + genre+ "</h3>";
+	markup+= "<h1>" + copyright + "</h1>";
+	markup += "<h1>" + releaseDate + "</h1>";
 
 
     $("#theDetails").html(markup);
