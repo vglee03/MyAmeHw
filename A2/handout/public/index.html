@@ -10,17 +10,27 @@ function sendToServer(){
 	var url = "./eval?eq=" + encodeURIComponent($("#eq").val());
 	console.log(url);
 	loadFile(url,function(resData){
-		$("#result")l.html(resData);
+		$("#result").html(resData);  //prints the math equation result 
 		
 		
 	});
 }
   </script>
 
+
+<style>
+	html{
+	background-color: blue;
+	color: black;
+	font-family: helvetica;
+}
+	</style>
+
+
 </head>
 
 <body>
-	<h1> Eval </h1>
+	<h1> ReallyCoolCalculator </h1>
   <textarea id='eq'></textarea>
   <button onclick='sendToServer()'> Evaluate </button>
   <div id='result'> </div>
